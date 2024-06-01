@@ -1,0 +1,67 @@
+.paste-url-form{
+  width: 100vh;
+  display: flex;
+  max-width: 500px;
+  gap: 10px;
+}
+
+:root{
+  --outline-color: #3f2f83;
+  --outline-color-st: #4b41785e;
+  --outline-color-ligther: #4a3994;
+}
+
+.paste-url-form input{
+  color: #ededed;
+  font-size: 18px;
+  padding: 12px 14px;
+  outline: none;
+  width: 100%;
+  border-radius: 5px;
+  border: 2px solid var(--outline-color);
+  background: #101019;
+  &::placeholder{
+    font-size: 17px;
+    color: #fff;
+    opacity: .45;
+    user-select: none;
+    transition: opacity .4s ease;
+  }
+  &:hover{
+    border: 2px solid var(--outline-color-ligther);
+  }
+  &:active{
+    border: 2px solid var(--outline-color);
+  }
+  &:focus{
+    box-shadow: 0 0 15px var(--outline-color-st);
+  }
+  transition: all .3s ease;
+}
+
+.paste-url-form input:hover::placeholder{
+  opacity: .2;
+}
+
+.paste-url-form button{
+  width: 150px;
+  font-size: 20px;
+  border-radius: 5px;
+  background: var(--outline-color);
+  color: #fff;
+  border: none;
+  user-select: none;
+  cursor: pointer;
+  &:hover{
+    scale: 1.02;
+    box-shadow: 4px 4px 1px #27272b;
+    filter: brightness(110%);
+  }
+  &:active{
+    scale: 1;
+    transform: translate(4px, 4px);
+    box-shadow: 0px 0px 1px #19191d;
+    filter: brightness(90%);
+  }
+  transition: all .2s ease;
+}

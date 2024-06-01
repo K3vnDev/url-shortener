@@ -1,0 +1,158 @@
+.error-card p{
+  white-space: pre-line;
+}
+
+.last-url-wrapper{
+  width: 100%;
+  height: 270px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.last-url-card{
+  background: #07070a;
+  border: 2px solid var(--outline-color-st);
+  padding: 25px 30px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  position: relative;
+  cursor: default;
+}
+
+.last-url-card header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.last-url-card header h3{
+  font-size: 22px;
+  opacity: .5;
+  font-weight: 500;
+}
+
+.last-url-card header button{
+  --size: 34px;
+  width: var(--size);
+  height: var(--size);
+  background: transparent;
+  border: none;
+}
+
+.last-url-card header button svg{
+  width: var(--size);
+  height: var(--size);
+  fill: var(--outline-color);
+
+  &:active{
+    scale: 1.1;
+    filter: brightness(130%);
+  }
+  transition: all .2s ease;
+}
+
+.empty-fav{
+  animation: empty-fav 1.5s ease infinite;
+}
+@keyframes empty-fav {
+  0%, 100%{
+    filter: brightness(100%);
+  }
+  50%{
+    filter: brightness(130%);
+  }
+}
+
+
+.last-url-card main{
+  display: flex;
+  height: 60px;
+  width: max-content;
+  gap: 18px;
+  background: #101014;
+  border: 2px solid #504f5d;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.last-url-card main p{
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  height: 100%;
+  padding-left: 16px;
+}
+
+.last-url-card main button{
+  height: 100%;
+  width: 55px;
+  background: black;
+  border: none;
+  cursor: pointer;
+}
+
+.last-url-card main button svg{
+  scale: 1.2;
+  transition: scale .3s ease-out;
+}
+.last-url-card main button:hover svg{
+  scale: 1.3;
+}
+.last-url-card main button:active svg{
+  scale: 1.1;
+}
+
+.last-url-card .copied-info-msg{
+  position: absolute;
+  left: 50%;
+  bottom: 0px;
+  transition: all .2s ease-out;
+  text-wrap: nowrap;
+  z-index: -1;
+  font-weight: 700;
+  transform: translate(-50%, 0);
+  animation: copied-info-msg 3s ease both;
+  color: var(--outline-color);
+}
+
+@keyframes copied-info-msg{
+  0%, 100%{
+    font-size: 24px;
+    opacity: 0;
+    transform: translate(-50%, 0);
+  }
+  12%, 85%{
+    font-size: 26px;
+    opacity: 1;
+    transform: translate(-50%, 50px);
+  }
+}
+
+.last-url-wrapper .url-loading{
+  width: 150px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+}
+.url-loading .point{
+  width: 22px;
+  height: 22px;
+  background: #fff;
+  border-radius: 50%;
+  opacity: .1;
+}
+
+@keyframes loading-point {
+  0%, 100%{
+    opacity: .1;
+  }
+  45%, 55%{
+    opacity: .3;
+  }
+}
+
