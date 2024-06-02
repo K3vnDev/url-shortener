@@ -156,3 +156,77 @@
   }
 }
 
+:root{
+  --error-red: #d85050;
+  --error-st-red: #d8505080;
+  --error-darker-red: #351414;
+}
+
+.error-card{
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  align-items: center;
+  background: var(--error-darker-red);
+  padding: 15px 20px;
+  border-radius: 10px;
+  border: 1px solid var(--error-red);
+  box-shadow: 0 0 6px var(--error-st-red);
+  user-select: none;
+
+  animation: error-card-appear .2s ease both;
+}
+.error-card.disappear{
+  animation: error-card-disappear .2s ease-out both;
+}
+
+.error-card p{
+  color: var(--error-red);
+  font-size: 18px;
+  font-weight: 600;
+}
+.error-card button{
+  border: none;
+  border-radius: 3px;
+  background: var(--error-red);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all .3s ease;
+  &:hover{
+    scale: 1.1;
+    filter: brightness(120%);
+    box-shadow: 0 0 5px var(--error-st-red);
+  }
+  &:active{
+    scale: .9;
+    filter: brightness(90%);
+    box-shadow: none;
+  }
+}
+
+@keyframes error-card-appear{
+  from{
+    opacity: 0;
+    scale: .7;
+    display: none;
+  }
+  to{
+    opacity: 1;
+    scale: 1;
+  }
+}
+@keyframes error-card-disappear{
+  from{
+    opacity: 1;
+    scale: 1;
+  }
+  to{
+    opacity: 0;
+    transform: translateY(40px);
+    display: none;
+  }
+}
+
+

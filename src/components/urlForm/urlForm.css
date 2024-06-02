@@ -1,6 +1,7 @@
 .paste-url-form{
   width: 100vh;
   display: flex;
+  position: relative;
   max-width: 500px;
   gap: 10px;
 }
@@ -64,4 +65,21 @@
     filter: brightness(90%);
   }
   transition: all .2s ease;
+}
+
+.error-msg{
+  position: absolute;
+  bottom: -30px;
+  text-wrap: nowrap;
+  color: var(--error-red);
+  font-size: 17px;
+  font-weight: 400;
+  opacity: .8;
+  user-select: none;
+  transition: opacity .12s ease-out;
+}
+
+.error-msg.disappear{
+  opacity: 0;
+  transition: opacity .5s ease-out;
 }

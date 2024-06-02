@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
-import { getRandomColor } from '../services/getRandomColor'
+import { getRandomColor } from '../functions/getRandomColor'
 import { useUrlsContext } from '../context/useUrlsContext'
 import { useUrls } from './useUrls'
 

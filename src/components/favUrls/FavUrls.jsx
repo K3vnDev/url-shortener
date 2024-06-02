@@ -1,4 +1,5 @@
 import { useUrlsContext } from '../../context/useUrlsContext'
+import { shortenUrlStart } from '../../functions/shortenUrlStart'
 import { useUrls } from '../../hooks/useUrls'
 import { CopyButton } from '../CopyButton'
 import './favUrls.css'
@@ -30,18 +31,6 @@ function FavUrl ({ index }) {
   const copyUrl = (e) => {
     e.stopPropagation()
     navigator.clipboard.writeText(shortedUrl)
-  }
-
-  const shortenUrlStart = url => {
-    const delValue = value => {
-      if (url.startsWith(value)) {
-        url = url.replace(value, '')
-      }
-    }
-    delValue('http://')
-    delValue('https://')
-    delValue('www.')
-    return url
   }
 
   return (

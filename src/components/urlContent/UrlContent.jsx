@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import { useUrlsContext } from '../../context/useUrlsContext'
-import './urlContent.css'
 import { useFavorite } from '../../hooks/useFavorite'
 import { CopyButton } from '../CopyButton'
+import './urlContent.css'
+import { shortenUrlStart } from '../../functions/shortenUrlStart'
 
 export function UrlContent () {
   const { lastUrl: { error, loading, shortedUrl, baseUrl } } = useUrlsContext()
@@ -45,9 +46,18 @@ function Loading () {
 }
 
 function Error ({ message }) {
+  const [className, setClassName] = useState('error-card')
+  const handleClick = () => {
+    setClassName('error-card disappear')
+  }
   return (
-    <div className='error-card'>
+    <div className={className}>
       <p>{message}</p>
+      <button onClick={handleClick}>
+        <svg xmlns='http://www.w3.org/2000/svg' height='20px' viewBox='0 -960 960 960' width='20px' fill='#e8eaed'>
+          <path d='m291-240-51-51 189-189-189-189 51-51 189 189 189-189 51 51-189 189 189 189-51 51-189-189-189 189Z' />
+        </svg>
+      </button>
     </div>
   )
 }
@@ -73,7 +83,7 @@ function UrlInfo ({ shortedUrl, baseUrl }) {
         </button>
       </header>
       <main>
-        <p>{shortedUrl}</p>
+        <p>{shortenUrlStart(shortedUrl)}</p>
         <CopyButton
           onClickCallback={handleClick}
           toolTip='Copy to clipboard'

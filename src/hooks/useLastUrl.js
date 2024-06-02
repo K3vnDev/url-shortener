@@ -12,8 +12,8 @@ export function useLastUrl () {
   }
 
   const shortenId = async (url) => {
+    setLastUrl({ loading: true })
     try {
-      setLastUrl({ loading: true })
       const res = await fetch(API_URL, {
         method: 'POST',
         headers: {

@@ -34,6 +34,18 @@
   &:hover{
     height: 125px;
   }
+  animation: url-wrapper-appear .3s ease both;
+}
+
+@keyframes url-wrapper-appear{
+  from{
+    opacity: 0;
+    scale: .9;  
+  }
+  to{
+    opacity: 1;
+    scale: 1;
+  }
 }
 
 .url-wrapper.disappear{
