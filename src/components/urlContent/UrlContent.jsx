@@ -19,7 +19,7 @@ export function UrlContent () {
   if (shortedUrl && baseUrl) {
     return (
       <div className='last-url-wrapper'>
-        <UrlInfo shortedUrl={shortedUrl} baseUrl={baseUrl} />
+        <UrlInfo shortedUrl={shortedUrl} />
       </div>
     )
   }
@@ -62,9 +62,9 @@ function Error ({ message }) {
   )
 }
 
-function UrlInfo ({ shortedUrl, baseUrl }) {
+function UrlInfo ({ shortedUrl }) {
   const [showCopiedMsg, setShowCopiedMsg] = useState(false)
-  const { favorite, toggleFavorite } = useFavorite({ shortedUrl, baseUrl })
+  const { favorite, toggleFavorite } = useFavorite()
 
   const handleClick = () => {
     navigator.clipboard.writeText(shortedUrl)

@@ -1,7 +1,8 @@
+import { useEffect } from 'react'
 import { useUrlsContext } from '../context/useUrlsContext'
 
 export function useUrls () {
-  const { setUrls } = useUrlsContext()
+  const { urls, setUrls } = useUrlsContext()
 
   const deleteUrl = index => {
     setUrls(u => {
@@ -10,6 +11,10 @@ export function useUrls () {
       return newUrls
     })
   }
+
+  useEffect(() => {
+    window.localStorage.setItem('fav-urls', JSON.stringify(urls))
+  }, [urls])
 
   return { deleteUrl }
 }

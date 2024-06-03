@@ -1,10 +1,10 @@
 import { useState, useEffect, useRef } from 'react'
-import { getRandomColor } from '../functions/getRandomColor'
 import { useUrlsContext } from '../context/useUrlsContext'
 import { useUrls } from './useUrls'
 
-export function useFavorite ({ shortedUrl, baseUrl }) {
-  const { urls, setUrls } = useUrlsContext()
+export function useFavorite () {
+  const { urls, setUrls, lastUrl } = useUrlsContext()
+  const { shortedUrl } = lastUrl
   const { deleteUrl } = useUrls()
   const firstRender = useRef(true)
 
@@ -20,13 +20,7 @@ export function useFavorite ({ shortedUrl, baseUrl }) {
       firstRender.current = false
     } else {
       if (favorite) {
-        setUrls(u => (
-          [...u, {
-            shortedUrl,
-            baseUrl,
-            color: getRandomColor()
-          }]
-        ))
+        setUrls(u => [...u, lastUrl])
       } else {
         if (urls.length === 0) return
         const index = urls.findIndex(url => url.shortedUrl === shortedUrl)

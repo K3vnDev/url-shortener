@@ -1,4 +1,6 @@
 import { useUrlsContext } from '../context/useUrlsContext'
+import { shortenUrlStart } from '../functions/shortenUrlStart.js'
+import { getRandomColor } from '../functions/getRandomColor.js'
 const API_URL = import.meta.env.VITE_API_URL
 
 export function useLastUrl () {
@@ -11,7 +13,7 @@ export function useLastUrl () {
     })
   }
 
-  const shortenId = async (url) => {
+  const shortenUrl = async (url) => {
     setLastUrl({ loading: true })
     try {
       const res = await fetch(API_URL, {
@@ -27,11 +29,11 @@ export function useLastUrl () {
         setError()
         return
       }
-      const shortedUrl = API_URL + urlId
-      setLastUrl({ shortedUrl, baseUrl })
+      const shortedUrl = shortenUrlStart(API_URL + urlId)
+      setLastUrl({ shortedUrl, baseUrl, urlColor: getRandomColor() })
     } catch {
       setError()
     }
   }
-  return { shortenId }
+  return { shortenUrl }
 }

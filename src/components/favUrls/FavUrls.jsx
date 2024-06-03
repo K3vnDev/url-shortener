@@ -3,6 +3,7 @@ import { shortenUrlStart } from '../../functions/shortenUrlStart'
 import { useUrls } from '../../hooks/useUrls'
 import { CopyButton } from '../CopyButton'
 import './favUrls.css'
+import { useColor } from '../../hooks/useColor'
 
 export function FavUrls () {
   const { urls } = useUrlsContext()
@@ -23,8 +24,9 @@ export function FavUrls () {
 
 function FavUrl ({ index }) {
   const { urls } = useUrlsContext()
-  const { shortedUrl, baseUrl, color } = urls[index]
-
+  const { shortedUrl, baseUrl, urlColor } = urls[index]
+  const { color, handleColorChange } = useColor({ urlColor, index })
+  // console.log(urlColor, color)
   const openBaseUrl = () => {
     window.open(baseUrl, '_blank')
   }
@@ -41,8 +43,15 @@ function FavUrl ({ index }) {
       <header>
         <div
           className='colored-box'
-          style={{ background: color }}
-        />
+          style={{ background: urlColor }}
+          onClick={e => e.stopPropagation()}
+        >
+          <input
+            type='color'
+            onChange={handleColorChange}
+            value={color}
+          />
+        </div>
         <h3>{shortenUrlStart(baseUrl)}</h3>
       </header>
       <section>

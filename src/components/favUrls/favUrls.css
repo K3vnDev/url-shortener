@@ -110,3 +110,18 @@
   height: 24px;
   border-radius: 2px;
 }
+
+.colored-box{
+  transition: all .3s ease;
+  &:hover{
+    scale: 1.08;
+    filter: brightness(120%);
+  }
+  &:active{
+    scale: .95;
+  }
+}
+.colored-box input[type=color]{
+  opacity: 0;
+  width: 100%;
+}

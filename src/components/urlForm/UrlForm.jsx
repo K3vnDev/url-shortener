@@ -8,7 +8,7 @@ const API_URL = import.meta.env.VITE_API_URL
 export function UrlForm () {
   const { displayError, errorMessage, displayingError } = useErrorMessage()
   const [input, setInput] = useState('')
-  const { shortenId } = useLastUrl()
+  const { shortenUrl } = useLastUrl()
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -22,7 +22,7 @@ export function UrlForm () {
       displayError("That's a shortened URL")
       return
     }
-    shortenId(input)
+    shortenUrl(input)
     setInput('')
   }
 
